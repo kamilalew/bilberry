@@ -1,4 +1,4 @@
-module.exports = function getTechnology() {
+module.exports = function getTechnology(id) {
     let technologies = [
       {
         id: 1,
@@ -24,9 +24,7 @@ module.exports = function getTechnology() {
         initRelease: 2009,
       },
     ];
-  
-  
-  
+
     this.getData = () => {
       return new Promise((resolve) => {
         resolve(this.database);
@@ -52,6 +50,12 @@ module.exports = function getTechnology() {
         }
       });
     };
-   
-    return technologies;
+    if(id) {
+      let technology =  technologies.find(technology => technology.id == id);
+      return technology ?
+        technology :
+          `We don't have the technology with id ${id} in our database`
+  } else {
+      return technologies;
+  }
   };

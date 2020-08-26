@@ -1,13 +1,31 @@
 import React from 'react';
+import axios from 'axios';
 import './Table.scss'
 
 export default class Table extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            technologies: []
+        }
+    }
+
+    componentDidMount = () => {
+        axios.get('/api/technologies')
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    technologies: response.data
+                })
+            })
+    }
+       
+
     render() {
         return (
             <table className='main-table'>
                 <thead>
                     <tr className='head-row'>
-                        <th>Record #</th>
                         <th>Id</th>
                         <th>Name</th>
                         <th>Language</th>
@@ -16,14 +34,19 @@ export default class Table extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
+                    {
+                        this.state.technologies
+                            .map(technology => (
                     <tr>
-                        <th>placeholder number</th>
-                        <th>placeholder1</th>
-                        <th>placeholder2</th>
-                        <th>placeholder3</th>
-                        <th>placeholder4</th>
-                        <th>placeholder5</th>
+                        <th>{technology.id}</th>
+                        <th>{technology.name}</th>
+                        <th>{technology.language}</th>
+                        <th>{technology.description}</th>
+                        <th>{technology.initRelease}</th>
                     </tr>
+                            )
+                        )
+                    }
                 </tbody>
             </table>
         )
