@@ -1,5 +1,5 @@
-const API = function () {
-    this.database = [
+module.exports = function getTechnology() {
+    let technologies = [
       {
         id: 1,
         name: "React.js",
@@ -25,6 +25,8 @@ const API = function () {
       },
     ];
   
+  
+  
     this.getData = () => {
       return new Promise((resolve) => {
         resolve(this.database);
@@ -40,9 +42,9 @@ const API = function () {
   
     this.deleteData = (data) => {
       return new Promise((resolve, reject) => {
-        const index = this.database.findIndex((item) => item.id == data);
+        const index = this.database.findIndex((item) => item.id === data);
   
-        if (index != -1) {
+        if (index !== -1) {
           this.database.splice(index, 1);
           resolve(true);
         } else {
@@ -50,5 +52,6 @@ const API = function () {
         }
       });
     };
+   
+    return technologies;
   };
-  
