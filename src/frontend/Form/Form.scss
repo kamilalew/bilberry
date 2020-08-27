@@ -1,10 +1,21 @@
 form {
     display: flex;
     flex-direction: column;
+    margin-left: 50px;
+    align-items: center;
 
     input {
         width: 20%;
-    }
+        height: 30px;
+    }  
+}
+
+.formHeading {
+    margin: 50px 0 20px 0;
+    font-weight: 700;
+    font-size: 30px;
+    color: #778899;
+
 }
 
 .button {
@@ -15,6 +26,7 @@ form {
     color: #F0F8FF;
     border-color: #F0F8FF;
     border-radius: 5px;
+    width: 20%;
 }
 
 .button:hover {
