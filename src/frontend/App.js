@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from './Table/Table';
 import Button from './Button/Button'
+import Form from './Form/Form'
 import './App.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <Table />
       <Button />
+      <Form />
     </div>
   );
 }
