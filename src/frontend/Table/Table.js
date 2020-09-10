@@ -37,12 +37,12 @@ export default class Table extends React.Component {
                     {
                         this.state.technologies
                             .map(technology => (
-                    <tr>
-                        <th>{technology.id}</th>
-                        <th>{technology.name}</th>
-                        <th>{technology.language}</th>
-                        <th>{technology.description}</th>
-                        <th>{technology.initRelease}</th>
+                    <tr key={technology.id}>
+                        <td>{technology.id}</td>
+                        <td>{technology.name}</td>
+                        <td>{technology.language}</td>
+                        <td>{technology.description}</td>
+                        <td>{technology.initRelease}</td>
                     </tr>
                             )
                         )

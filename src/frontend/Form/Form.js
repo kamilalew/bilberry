@@ -1,5 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import './Form.scss'
+
+
 
 export default class Form extends React.Component {
     constructor() {
@@ -19,8 +22,16 @@ export default class Form extends React.Component {
     }
 
     submitHandler = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         console.log(this.state)
+        axios.post('http://localhost:3001/api/technologies', this.state)
+            .then(response => {
+                console.log(response)
+                
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     render() {

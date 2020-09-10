@@ -1,61 +1,45 @@
-module.exports = function getTechnology(id) {
-    let technologies = [
-      {
-        id: 1,
-        name: "React.js",
-        language: "JavaScript",
-        description: "Front-end library powered by Facebook",
-        initRelease: 2013,
-      },
-      {
-        id: 2,
-        name: "Angular",
-        language: "JavaScript",
-        description:
-          "Angular is a platform for building mobile and desktop web applications.",
-        initRelease: 2016,
-      },
-      {
-        id: 3,
-        name: "Node.js",
-        language: "JavaScript",
-        description:
-          "Is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
-        initRelease: 2009,
-      },
-    ];
 
-    this.getData = () => {
-      return new Promise((resolve) => {
-        resolve(this.database);
-      });
-    };
+let database = [
+  {
+    id: 1,
+    name: "React.js",
+    language: "JavaScript",
+    description: "Front-end library powered by Facebook",
+    initRelease: 2013,
+  },
+  {
+    id: 2,
+    name: "Angular",
+    language: "JavaScript",
+    description:
+      "Angular is a platform for building mobile and desktop web applications.",
+    initRelease: 2016,
+  },
+  {
+    id: 3,
+    name: "Node.js",
+    language: "JavaScript",
+    description:
+      "Is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
+    initRelease: 2009,
+  },
+];
+
+
+module.exports = {
+    getData: () => {
+      return database
+    },
   
-    this.addData = (data) => {
-      return new Promise((resolve) => {
-        this.database.push(data);
-        resolve(true);
-      });
-    };
+    addData: (data) => {
+      database.push(data)
+    },
   
-    this.deleteData = (data) => {
-      return new Promise((resolve, reject) => {
-        const index = this.database.findIndex((item) => item.id === data);
+    deleteData: (id) => {
+        const index = database.findIndex((item) => item.id == id);
   
         if (index !== -1) {
-          this.database.splice(index, 1);
-          resolve(true);
-        } else {
-          reject(false);
+          database.splice(index, 1);
         }
-      });
-    };
-    if(id) {
-      let technology =  technologies.find(technology => technology.id == id);
-      return technology ?
-        technology :
-          `We don't have the technology with id ${id} in our database`
-  } else {
-      return technologies;
-  }
-  };
+    },
+};
